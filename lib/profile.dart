@@ -8,6 +8,7 @@ class profile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          backgroundColor: Colors.black54,
           title: Text("Profile"),
         ),
         body: SingleChildScrollView(
@@ -134,7 +135,7 @@ class profile extends StatelessWidget {
                           gradient: LinearGradient(
                               begin: Alignment.centerLeft,
                               end: Alignment.centerRight,
-                              colors: [Colors.pink, Colors.redAccent]),
+                              colors: [Colors.blueGrey, Colors.blueGrey]),
                           borderRadius: BorderRadius.circular(30.0),
                         ),
                         child: Container(
@@ -164,7 +165,7 @@ class profile extends StatelessWidget {
                           gradient: LinearGradient(
                               begin: Alignment.centerLeft,
                               end: Alignment.centerRight,
-                              colors: [Colors.pink, Colors.redAccent]),
+                              colors: [Colors.blueGrey, Colors.blueGrey]),
                           borderRadius: BorderRadius.circular(80.0),
                         ),
                         child: Container(

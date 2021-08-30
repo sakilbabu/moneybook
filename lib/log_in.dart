@@ -1,116 +1,79 @@
 import 'package:flutter/material.dart';
-import 'package:moneybook/signup.dart';
+import 'package:moneybook/gateway_page.dart';
 import 'package:moneybook/task_page.dart';
 
 class login extends StatefulWidget {
-  const login({Key? key}) : super(key: key);
-
   @override
-  _loginState createState() => _loginState();
+  _State createState() => _State();
 }
 
-class _loginState extends State<login> {
-  get passwordController => null;
+class _State extends State<login> {
+  TextEditingController nameController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
 
-  get nameController => null;
+  List<String> name = ["sakil", "muku", "gones", "emon"];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("watch & earn"),
+          backgroundColor: Colors.black54,
+          title: Text('moneybook'),
         ),
-        body: Column(children: <Widget>[
-          Expanded(
-            child: ListView(
+        body: Padding(
+            padding: EdgeInsets.all(10),
+            child: Column(
               children: <Widget>[
-                Container(
-                    width: MediaQuery.of(context).size.width,
-                    alignment: Alignment.center,
-                    padding: EdgeInsets.all(10),
-                    child: Text(
-                      'watch & earn login',
-                      style: TextStyle(
-                          color: Colors.blue,
-                          fontWeight: FontWeight.w500,
-                          fontSize: 30),
-                    )),
-                Container(
-                    width: MediaQuery.of(context).size.width,
-                    alignment: Alignment.center,
-                    padding: EdgeInsets.all(10),
-                    child: Text(
-                      'Sign in',
-                      style: TextStyle(fontSize: 20),
-                    )),
-                Container(
-                  width: MediaQuery.of(context).size.width,
+                Padding(padding: EdgeInsets.all(20), child: Text("sign in")),
+                Padding(
                   padding: EdgeInsets.all(10),
-                  child: TextField(
-                    keyboardType: TextInputType.emailAddress,
+                  child: TextFormField(
                     controller: nameController,
                     decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: 'Mail',
-                        prefixIcon: Icon(Icons.person)),
+                      border: OutlineInputBorder(),
+                      labelText: 'User Name',
+                    ),
                   ),
                 ),
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                  padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
-                  child: TextField(
-                    keyboardType: TextInputType.visiblePassword,
+                Padding(
+                  padding: EdgeInsets.all(10),
+                  child: TextFormField(
                     obscureText: true,
                     controller: passwordController,
                     decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: 'Password',
-                        prefixIcon: Icon(Icons.password)),
+                      border: OutlineInputBorder(),
+                      labelText: 'Password',
+                    ),
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return "Requird";
+                      } else {
+                        return null;
+                      }
+                    },
                   ),
                 ),
-                TextButton(
-                  onPressed: () {
-                    //forgot password screen
-                  },
-                  child: Text('Forgot Password'),
+                ElevatedButton(
+                    child: Text('Login'),
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.black54,
+                    ),
+                    onPressed: () {}),
+                SizedBox(
+                  height: 10,
                 ),
-                Container(
-                    width: MediaQuery.of(context).size.width,
-                    height: 50,
-                    padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
-                    child: ElevatedButton(
-                      child: Text('Login'),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => taskpage()),
-                        );
-                      },
-                    )),
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                  child: Row(
-                    children: <Widget>[
-                      Text('Do not have account?'),
-                      TextButton(
-                        child: Text(
-                          'Sign up',
-                          style: TextStyle(fontSize: 10),
-                        ),
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => signup()),
-                          );
-                        },
-                      ),
-                    ],
-                    mainAxisAlignment: MainAxisAlignment.center,
-                  ),
-                )
+                FlatButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => gateway()),
+                      );
+                    },
+                    child: Text(
+                      "sign up",
+                      style: TextStyle(),
+                    ))
               ],
-            ),
-          )
-        ]));
+            )));
   }
 }

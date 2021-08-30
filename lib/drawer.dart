@@ -21,31 +21,49 @@ class dwr extends StatelessWidget {
             children: <Widget>[
               DrawerHeader(
                 child: Text('Watch and earn community '),
-                decoration: BoxDecoration(color: Colors.green),
+                decoration: BoxDecoration(color: Colors.black54),
               ),
               ListTile(
-                leading: Icon(Icons.add_circle_outlined),
+                leading: Icon(
+                  Icons.add_circle_outlined,
+                  color: Colors.blueGrey,
+                ),
                 title: const Text('Mail Us'),
-                trailing: Icon(Icons.mail),
+                trailing: Icon(
+                  Icons.mail,
+                  color: Colors.blueGrey,
+                ),
                 onTap: () {},
               ),
               ListTile(
-                leading: Icon(Icons.add_circle_outlined),
+                leading: Icon(
+                  Icons.add_circle_outlined,
+                  color: Colors.blueGrey,
+                ),
                 title: const Text('Rate Us'),
-                trailing: Icon(Icons.star_rate),
+                trailing: Icon(
+                  Icons.star_rate,
+                  color: Colors.blueGrey,
+                ),
                 onTap: () {
                   // Update the state of the app.
                   // ...
                 },
               ),
               ListTile(
-                leading: Icon(Icons.add_circle_outlined),
+                leading: Icon(
+                  Icons.add_circle_outlined,
+                  color: Colors.blueGrey,
+                ),
                 title: const Text('Admin Panel'),
-                trailing: Icon(Icons.admin_panel_settings),
+                trailing: Icon(
+                  Icons.admin_panel_settings,
+                  color: Colors.blueGrey,
+                ),
                 onTap: () {
                   showDialog(
                     context: context,
-                    builder: (_) => LogoutOverlay(),
+                    builder: (_) => alert(),
                   );
                 },
               ),

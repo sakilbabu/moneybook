@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:moneybook/task_page.dart';
 
+import 'gateway_page.dart';
+
 class balance extends StatefulWidget {
   const balance({Key? key}) : super(key: key);
 
@@ -21,11 +23,12 @@ class _balanceState extends State<balance> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          backgroundColor: Colors.black54,
           leading: IconButton(
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const taskpage()),
+                MaterialPageRoute(builder: (context) => taskpage()),
               );
             },
             icon: const Icon(Icons.arrow_back),
@@ -33,59 +36,78 @@ class _balanceState extends State<balance> {
           title: const Text("Balance Check out"),
         ),
         body: Container(
-          padding: EdgeInsets.fromLTRB(10, 150, 10, 10),
+          padding: EdgeInsets.fromLTRB(10, 50, 10, 10),
           color: Colors.white,
           width: double.infinity,
-          height: 300,
+          height: double.infinity,
           child: Stack(
+            alignment: Alignment.center,
             children: <Widget>[
-              Positioned(
-                  left: 50,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.blue,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    constraints:
-                        const BoxConstraints(maxHeight: 100, maxWidth: 220),
-                  )),
-              Positioned(
-                top: 25,
-                child: InkWell(
-                  onTap: () {
-                    taka = taka + 100011;
-                    setState(() {});
-                  },
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(20.0),
-                    child: Image.asset(
-                      "assets/images/tap.png",
-                      height: 50,
-                      width: 100,
+              Container(
+                  child: Column(children: [
+                Container(
+                    child: Text(
+                  "balance in BDT",
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.black54,
+                    fontWeight: FontWeight.bold,
+                  ),
+                )),
+                SizedBox(height: 15),
+                Container(
+                    child: Text(
+                  "$taka",
+                  style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.red),
+                )),
+                SizedBox(height: 15),
+                Container(
+                  child: InkWell(
+                    onTap: () {
+                      taka = taka + 100011;
+                      setState(() {});
+                    },
+                    child: ClipRRect(
+                        borderRadius: BorderRadius.circular(20.0),
+                        child: Icon(
+                          Icons.monetization_on_rounded,
+                          size: 50,
+                          color: Colors.red,
+                        )),
+                  ),
+                ),
+                SizedBox(height: 20),
+                InkWell(
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    child: Text("Withdraw"),
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.black54,
                     ),
                   ),
                 ),
-              ),
-              Positioned(
-                  top: 15,
-                  left: 90,
-                  child: Text(
-                    "balance in BDT",
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
+                SizedBox(height: 20),
+                Container(
+                    child: InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => gateway()),
+                    );
+                  },
+                  child: ClipRect(
+                    child: Text(
+                      "click here to know about payment gateway",
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          decoration: TextDecoration.underline),
                     ),
-                  )),
-              Positioned(
-                  top: 40,
-                  left: 120,
-                  child: Text(
-                    "$taka",
-                    style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.red),
-                  ))
+                  ),
+                ))
+              ])),
             ],
           ),
         ));

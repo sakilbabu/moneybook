@@ -6,8 +6,6 @@ import 'ballance.dart';
 import 'drawer.dart';
 
 class taskpage extends StatefulWidget {
-  const taskpage({Key? key}) : super(key: key);
-
   @override
   _taskpageState createState() => _taskpageState();
 }
@@ -30,35 +28,42 @@ class _taskpageState extends State<taskpage> {
     "https://youtu.be/vaMbrYf6ubQ?list=RDMM"
   ];
   List<Tab> tabs = <Tab>[
-    Tab(text: 'TASKS'),
-    Tab(text: 'RULES'),
+    Tab(
+        child: Icon(
+      Icons.video_collection,
+      color: Colors.blueGrey,
+    )),
+    Tab(
+        child: Icon(
+      Icons.privacy_tip_outlined,
+      color: Colors.blueGrey,
+    )),
   ];
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
         length: tabs.length,
-        // The Builder widget is used to have a different BuildContext to access
-        // closest DefaultTabController.
         child: Builder(builder: (BuildContext context) {
           final TabController tabController = DefaultTabController.of(context)!;
           tabController.addListener(() {
-            if (!tabController.indexIsChanging) {
-              // Your code goes here.
-              // To get index of current tab use tabController.index
-            }
+            if (!tabController.indexIsChanging) {}
           });
           return Scaffold(
               appBar: AppBar(
-                title: const Text("Watch & earn"),
+                backgroundColor: Colors.black54,
+                title: Text("moneybook"),
                 bottom: TabBar(
                   indicator: BoxDecoration(
-                      borderRadius: BorderRadius.circular(50), // Creates border
-                      color: Colors.black),
+                      borderRadius: BorderRadius.circular(00), // Creates border
+                      color: Colors.black26),
                   tabs: tabs,
                 ),
                 actions: [
                   IconButton(
-                      icon: Icon(Icons.attach_money_outlined),
+                      icon: Icon(
+                        Icons.attach_money_outlined,
+                        color: Colors.blueGrey,
+                      ),
                       onPressed: () {
                         Navigator.push(
                           context,
@@ -70,6 +75,7 @@ class _taskpageState extends State<taskpage> {
                       icon: Icon(
                         Icons.person,
                         size: 30,
+                        color: Colors.blueGrey,
                       ),
                       onPressed: () {
                         Navigator.push(
@@ -92,14 +98,17 @@ class _taskpageState extends State<taskpage> {
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(15.0),
                                 ),
-                                color: Colors.blue,
+                                color: Colors.brown,
                                 elevation: 10,
                                 child: Column(
                                   mainAxisSize: MainAxisSize.min,
                                   children: <Widget>[
                                     ListTile(
-                                      leading: const Icon(Icons.play_arrow,
-                                          size: 100),
+                                      leading: Icon(
+                                        Icons.video_collection,
+                                        size: 100,
+                                        color: Colors.blueGrey,
+                                      ),
                                       title: Text(numberOfCards[index],
                                           style: const TextStyle(fontSize: 20)),
                                       subtitle: const Text(
@@ -109,12 +118,19 @@ class _taskpageState extends State<taskpage> {
                                     ButtonBar(
                                       children: <Widget>[
                                         RaisedButton(
+                                          shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(15)),
                                           child: const Text('skip'),
                                           onPressed: () {},
                                         ),
                                         InkWell(
                                           child: RaisedButton(
-                                              child: const Text('open link'),
+                                              shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          15)),
+                                              child: const Text('watch'),
                                               onPressed: () =>
                                                   launch(numberOfLinks[index])),
                                         )
