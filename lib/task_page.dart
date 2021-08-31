@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:moneybook/profile.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import 'VideoPlay.dart';
 import 'ballance.dart';
 import 'drawer.dart';
 
@@ -122,7 +123,14 @@ class _taskpageState extends State<taskpage> {
                                               borderRadius:
                                                   BorderRadius.circular(15)),
                                           child: const Text('skip'),
-                                          onPressed: () {},
+                                          onPressed: () {
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      VideoPlay()),
+                                            );
+                                          },
                                         ),
                                         InkWell(
                                           child: RaisedButton(

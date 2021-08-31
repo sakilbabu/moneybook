@@ -67,9 +67,15 @@ class _State extends State<login> {
                     ),
                     onPressed: () {
                       setState(() {
-                        _text.text.isEmpty
+                        if (_text.text.isEmpty
                             ? _validate = true
-                            : _validate = false;
+                            : _validate = false) {
+                        } else {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => taskpage()),
+                          );
+                        }
                       });
                     }),
                 SizedBox(
