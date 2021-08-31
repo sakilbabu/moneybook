@@ -8,10 +8,15 @@ class login extends StatefulWidget {
 }
 
 class _State extends State<login> {
-  TextEditingController nameController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
+  final _text = TextEditingController();
+  final _pass = TextEditingController();
+  bool _validate = false;
 
-  List<String> name = ["sakil", "muku", "gones", "emon"];
+  @override
+  void dispose() {
+    _text.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,8 +33,9 @@ class _State extends State<login> {
                 Padding(
                   padding: EdgeInsets.all(10),
                   child: TextFormField(
-                    controller: nameController,
+                    controller: _text,
                     decoration: InputDecoration(
+                      errorText: _validate ? 'Username Can\'t Be Empty' : null,
                       border: OutlineInputBorder(),
                       labelText: 'User Name',
                     ),
@@ -39,8 +45,9 @@ class _State extends State<login> {
                   padding: EdgeInsets.all(10),
                   child: TextFormField(
                     obscureText: true,
-                    controller: passwordController,
+                    controller: _pass,
                     decoration: InputDecoration(
+                      errorText: _validate ? 'Password Can\'t Be Empty' : null,
                       border: OutlineInputBorder(),
                       labelText: 'Password',
                     ),
@@ -58,7 +65,13 @@ class _State extends State<login> {
                     style: ElevatedButton.styleFrom(
                       primary: Colors.black54,
                     ),
-                    onPressed: () {}),
+                    onPressed: () {
+                      setState(() {
+                        _text.text.isEmpty
+                            ? _validate = true
+                            : _validate = false;
+                      });
+                    }),
                 SizedBox(
                   height: 10,
                 ),

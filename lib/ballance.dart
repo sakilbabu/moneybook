@@ -19,6 +19,7 @@ class _balanceState extends State<balance> {
     super.initState();
   }
 
+  TextEditingController nameController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -66,10 +67,7 @@ class _balanceState extends State<balance> {
                 SizedBox(height: 15),
                 Container(
                   child: InkWell(
-                    onTap: () {
-                      taka = taka + 100011;
-                      setState(() {});
-                    },
+                    onTap: () {},
                     child: ClipRRect(
                         borderRadius: BorderRadius.circular(20.0),
                         child: Icon(
@@ -82,7 +80,9 @@ class _balanceState extends State<balance> {
                 SizedBox(height: 20),
                 InkWell(
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      showAlertDialog(context);
+                    },
                     child: Text("Withdraw"),
                     style: ElevatedButton.styleFrom(
                       primary: Colors.black54,
@@ -112,4 +112,47 @@ class _balanceState extends State<balance> {
           ),
         ));
   }
+}
+
+TextEditingController nameController = TextEditingController();
+showAlertDialog(BuildContext context) {
+  Widget cancelButton = TextButton(
+    child: Text("Cancel"),
+    onPressed: () {
+      Navigator.pop(
+        context,
+        MaterialPageRoute(builder: (context) => balance()),
+      );
+    },
+  );
+  Widget continueButton = TextButton(
+    child: Text("Withdraw"),
+    onPressed: () {},
+  );
+
+  var nameController;
+  AlertDialog alert = AlertDialog(
+    title: Padding(
+      padding: EdgeInsets.all(10),
+      child: TextFormField(
+        controller: nameController,
+        decoration: InputDecoration(
+          border: OutlineInputBorder(),
+          labelText: 'Amount',
+        ),
+      ),
+    ),
+    content: Text("Enter the amount of points you would like to withdraw"),
+    actions: [
+      cancelButton,
+      continueButton,
+    ],
+  );
+
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return alert;
+    },
+  );
 }

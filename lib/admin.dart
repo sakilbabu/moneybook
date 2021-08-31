@@ -2,6 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:moneybook/drawer.dart';
 
 class admin extends StatelessWidget {
+  int notification = 6;
+  List<String> names = [
+    "sakil",
+    "haryy",
+    "josep",
+    "killion",
+    "neyma",
+    "kina",
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,7 +31,7 @@ class admin extends StatelessWidget {
         children: [
           Expanded(
             child: ListView.builder(
-              itemCount: 5,
+              itemCount: names.length,
               itemBuilder: (BuildContext context, int index) {
                 return InkWell(
                     onTap: () {},
@@ -43,7 +52,7 @@ class admin extends StatelessWidget {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     Icon(Icons.person),
-                                    Text("Someone"),
+                                    Text(names[index]),
                                     SizedBox(width: 10),
                                     Text("Withdrawed 100p"),
                                   ],
