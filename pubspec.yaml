@@ -36,6 +36,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   url_launcher: ^6.0.9
   video_player: ^2.1.14
+  timer_count_down: ^2.2.0
 
 dev_dependencies:
   flutter_test:
@@ -63,6 +64,7 @@ flutter:
   assets:
     - assets/images/tap.png
     - assets/images/icon.png
+    - assets/videos/vid.mp4
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

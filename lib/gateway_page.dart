@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:moneybook/log_in.dart';
 
-class gateway extends StatelessWidget {
-  const gateway({Key? key}) : super(key: key);
+import 'login_page.dart';
+
+class GatewayPage extends StatelessWidget {
+  const GatewayPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +14,7 @@ class gateway extends StatelessWidget {
           onPressed: () {
             Navigator.pop(
               context,
-              MaterialPageRoute(builder: (context) => login()),
+              MaterialPageRoute(builder: (context) => LoginPage()),
             );
           },
           icon: const Icon(Icons.arrow_back),

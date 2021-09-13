@@ -1,43 +1,58 @@
 import 'package:flutter/material.dart';
 import 'package:moneybook/profile.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'videoPlaying_page.dart';
+import 'ballance_page.dart';
+import 'drawer_page.dart';
 
-import 'VideoPlay.dart';
-import 'ballance.dart';
-import 'drawer.dart';
-
-class taskpage extends StatefulWidget {
+class TaskPage extends StatefulWidget {
   @override
-  _taskpageState createState() => _taskpageState();
+  _TaskPageState createState() => _TaskPageState();
 }
 
-class _taskpageState extends State<taskpage> {
+class _TaskPageState extends State<TaskPage> {
   List<String> numberOfCards = [
-    "Task 1",
-    "Task 2",
-    "Task 3",
-    "Task 4",
-    "Task 5",
-    "Task 6"
+    "october 1",
+    "october 2",
+    "october 3",
+    "october 4",
+    "october 5",
+    "october 6",
+    "october 7",
+    "october 8",
+    "october 9",
+    "october 10",
+    "october 11",
+    "october 12",
+    "october 13",
+    "october 14",
+    "october 15",
+    "october 16",
+    "october 17",
+    "october 18",
+    "october 19",
+    "october 20",
+    "october 21",
+    "october 22",
+    "october 23",
+    "october 24",
+    "october 25",
+    "october 26",
+    "october 27",
+    "october 28",
+    "october 29",
+    "october 30"
   ];
-  List<String> numberOfLinks = [
-    "https://youtu.be/7tNPxY_ntEA?t=69",
-    "https://youtu.be/W0DM5lcj6mw?list=RDMM&t=3",
-    "https://youtu.be/q-RP99S_qK0?list=RDMM",
-    "https://youtu.be/KPQTHLnqORw?list=RDMM&t=3",
-    "https://youtu.be/ZTBwxy4wsBQ?list=RDMM",
-    "https://youtu.be/vaMbrYf6ubQ?list=RDMM"
-  ];
+
   List<Tab> tabs = <Tab>[
     Tab(
         child: Icon(
       Icons.video_collection,
-      color: Colors.blueGrey,
+      color: Colors.black,
     )),
     Tab(
         child: Icon(
       Icons.privacy_tip_outlined,
-      color: Colors.blueGrey,
+      color: Colors.black,
     )),
   ];
   @override
@@ -51,37 +66,42 @@ class _taskpageState extends State<taskpage> {
           });
           return Scaffold(
               appBar: AppBar(
-                backgroundColor: Colors.black54,
-                title: Text("moneybook"),
+                leading: Icon(Icons.menu),
+                backgroundColor: Colors.white,
+                title: Text(
+                  "moneybook",
+                  style: TextStyle(color: Colors.black),
+                ),
                 bottom: TabBar(
                   indicator: BoxDecoration(
                       borderRadius: BorderRadius.circular(00), // Creates border
-                      color: Colors.black26),
+                      color: Colors.white),
                   tabs: tabs,
                 ),
                 actions: [
                   IconButton(
                       icon: Icon(
                         Icons.attach_money_outlined,
-                        color: Colors.blueGrey,
+                        color: Colors.black,
                       ),
                       onPressed: () {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const balance()),
+                              builder: (context) => const BalancePage()),
                         );
                       }),
                   IconButton(
                       icon: Icon(
                         Icons.person,
                         size: 30,
-                        color: Colors.blueGrey,
+                        color: Colors.black,
                       ),
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => profile()),
+                          MaterialPageRoute(
+                              builder: (context) => ProfilePage()),
                         );
                       }),
                 ],
@@ -90,61 +110,45 @@ class _taskpageState extends State<taskpage> {
               body: TabBarView(
                 children: [
                   Center(
-                      child: ListView.builder(
+                      child: GridView.builder(
+                          gridDelegate:
+                              SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 2),
                           itemCount: numberOfCards.length,
                           itemBuilder: (context, index) {
                             return Padding(
                               padding: const EdgeInsets.all(10),
                               child: Card(
+                                color: Colors.deepOrange[100],
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(15.0),
                                 ),
-                                color: Colors.brown,
-                                elevation: 10,
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: <Widget>[
-                                    ListTile(
-                                      leading: Icon(
-                                        Icons.video_collection,
-                                        size: 100,
-                                        color: Colors.blueGrey,
-                                      ),
-                                      title: Text(numberOfCards[index],
-                                          style: const TextStyle(fontSize: 20)),
-                                      subtitle: const Text(
-                                          'Click on open to earn',
-                                          style: TextStyle(fontSize: 15)),
-                                    ),
-                                    ButtonBar(
-                                      children: <Widget>[
-                                        RaisedButton(
-                                          shape: RoundedRectangleBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(15)),
-                                          child: const Text('skip'),
-                                          onPressed: () {
-                                            Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      VideoPlay()),
-                                            );
-                                          },
+                                child: InkWell(
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => VideoPlay()),
+                                    );
+                                  },
+                                  child: Column(
+                                    children: <Widget>[
+                                      Image.network(
+                                          "https://images.unsplash.com/photo-1631499264602-60f495f5b657?ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"),
+                                      ListTile(
+                                        leading: Icon(
+                                          Icons.video_collection,
+                                          color: Colors.black,
                                         ),
-                                        InkWell(
-                                          child: RaisedButton(
-                                              shape: RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          15)),
-                                              child: const Text('watch'),
-                                              onPressed: () =>
-                                                  launch(numberOfLinks[index])),
-                                        )
-                                      ],
-                                    ),
-                                  ],
+                                        title: Text(
+                                          numberOfCards[index],
+                                          style: TextStyle(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                             );
@@ -154,14 +158,15 @@ class _taskpageState extends State<taskpage> {
                       padding: EdgeInsets.all(20),
                       child: Text('''Terms and Policies
 
- 1. A/c registration fees BDT 3000/-.
- 2.Premium registration 8000/-.
+ 1. A/c registration fees BDT 10000/-.
+ 2.Premium registration 1500/-.
  3. Users need to watch each full video(only for the first month). 
  4. A/c validity 1 year.
  5. A/c renew fees BDT 1000.
- 6. Only for full time watches , users will get rewarded BDT 100/- and premium members will get rewarded BDT 250/- . 
- 7. Per every single refer , user will get BDT 100/- 
- 7. Changes applicable .
+ 6. Only for full time watches,users will get rewarded BDT 300/- 
+ 7. premium members will get rewarded BDT 500/- . 
+ 8. Per every single refer , user will get BDT 1000/- 
+ 9. Changes applicable .
 '''),
                     ),
                   )
